@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Carbon Calculator</title>
+</head>
+<body>
+    <h1>Personal Carbon Calculator App ⚠️</h1>
+    <form action="/calculate" method="post">
+        <h2>🌍 Your Country</h2>
+        <select name="country">
+            <option value="India">India</option>
+        </select>
+        
+        <div style="margin-top: 20px;">
+            <h2>🚗 Daily commute distance (in km)</h2>
+            <input type="number" name="distance" step="0.1">
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h2>💡 Monthly electricity consumption (in kWh)</h2>
+            <input type="number" name="electricity" step="0.1">
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h2>🗑️ Waste generated per week (in kg)</h2>
+            <input type="number" name="waste" step="0.1">
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h2>🍽️ Number of meals per day</h2>
+            <input type="number" name="meals" step="1">
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button type="submit">Calculate CO2 Emissions</button>
+        </div>
+    </form>
+    
+    {% if total_emissions is not none %}
+        <h2>Results</h2>
+        <div>
+            <h3>Carbon Emissions by Category</h3>
+            <p>🚗 Transportation: {{ transportation_emissions }} tonnes CO2 per year</p>
+            <p>💡 Electricity: {{ electricity_emissions }} tonnes CO2 per year</p>
+            <p>🍽️ Diet: {{ diet_emissions }} tonnes CO2 per year</p>
+            <p>🗑️ Waste: {{ waste_emissions }} tonnes CO2 per year</p>
+        </div>
+        <div>
+            <h3>Total Carbon Footprint</h3>
+            <p>🌍 Your total carbon footprint is: {{ total_emissions }} tonnes CO2 per year</p>
+            <p>In 2021, CO2 emissions per capita for India was 1.9 tons of CO2 per capita. Between 1972 and 2021, CO2 emissions per capita of India grew substantially from 0.39 to 1.9 tons of CO2 per capita rising at an increasing annual rate that reached a maximum of 9.41% in 2021.</p>
+        </div>
+    {% endif %}
+</body>
+</html>
